@@ -1,2 +1,2 @@
-# weeding
-My weeding Website
+# wedding
+My wedding Website
