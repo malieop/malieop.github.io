@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Wedding</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/flights.css">
     <link rel="icon" type="image/png" sizes="32x32" href="mini-logo.png">
 
 </head>
@@ -85,7 +84,7 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Bela e Diogo. Feito com ❤️ para o nosso dia.</p>
-            <audio controls autoplay loop class="audio-player">
+            <audio id="backgroundMusic" controls autoplay class="audio-player">
                 <source src="make-you-feel-my-love.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
@@ -96,7 +95,29 @@
     <script src="js/animations.js"></script>
     <script src="js/form.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/flights-inline.js"></script>
+    <script>
+        const autoStartMusic = () => {
+            const audio = document.getElementById('backgroundMusic');
+            if (audio && audio.paused) {
+                audio.play().then(() => {
+                    console.log('Music started!');
+                    // Remove the listeners after music starts
+                    document.removeEventListener('click', autoStartMusic);
+                    document.removeEventListener('scroll', autoStartMusic);
+                    document.removeEventListener('touchstart', autoStartMusic);
+                    document.removeEventListener('touchend', autoStartMusic);
+                    document.removeEventListener('touchmove', autoStartMusic);
+                }).catch(e => console.log('Autoplay failed:', e));
+            }
+        };
+
+
+        document.addEventListener('click', autoStartMusic);
+        document.addEventListener('scroll', autoStartMusic);
+        document.addEventListener('touchstart', autoStartMusic);
+        document.addEventListener('touchend', autoStartMusic);
+        document.addEventListener('touchmove', autoStartMusic);
+    </script>
 </body>
 
 </html>
