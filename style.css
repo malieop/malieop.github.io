@@ -377,6 +377,10 @@ body {
     margin-bottom: 3rem;
 }
 
+.audio-player{
+    margin-top: 1rem;
+}
+
 
 @media (max-width:1200px) {
 
